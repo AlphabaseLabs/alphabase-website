@@ -1,87 +1,378 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Alphabase — EHR+ with AI WhatsApp for Clinics</title>
-  <meta name="description" content="Launch WhatsApp-first patient engagement with an EHR+ platform. Reduce no-shows, automate reminders, and run a modern clinic—fast.">
+  <meta name="description"
+    content="Launch WhatsApp-first patient engagement with an EHR+ platform. Reduce no-shows, automate reminders, and run a modern clinic—fast.">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Gabarito:wght@500;600;700;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Gabarito:wght@500;600;700;900&display=swap"
+    rel="stylesheet">
   <style>
-    :root{
+    :root {
       /* Framer-ish tokens / spacing */
-      --bg:#F6FBFF;                 /* light airy background */
-      --paper:#ffffff;              /* card background */
-      --ink:#0B0B0F;                /* primary text */
-      --muted:#667085;              /* secondary text */
-      --line:#E6EAF0;               /* borders */
-      --accent:#2F74DC;             /* rgb(47,116,220) from ref */
-      --accent-600:#245db0;
-      --accent-50:#EAF2FF;
-      --success:#00AD09;
-      --success-50:#E8F9EA;
-      --warning:#D4A217;
+      --bg: #F6FBFF;
+      /* light airy background */
+      --paper: #ffffff;
+      /* card background */
+      --ink: #0B0B0F;
+      /* primary text */
+      --muted: #667085;
+      /* secondary text */
+      --line: #E6EAF0;
+      /* borders */
+      --accent: #2F74DC;
+      /* rgb(47,116,220) from ref */
+      --accent-600: #245db0;
+      --accent-50: #EAF2FF;
+      --success: #00AD09;
+      --success-50: #E8F9EA;
+      --warning: #D4A217;
 
-      --radius:20px;                /* rounded corners */
-      --shadow:0 8px 30px rgba(15, 23, 42, .06);
-      --container:1120px;
+      --radius: 20px;
+      /* rounded corners */
+      --shadow: 0 8px 30px rgba(15, 23, 42, .06);
+      --container: 1120px;
 
       --h1: clamp(36px, 6vw, 64px);
       --h2: clamp(26px, 4vw, 40px);
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
-    h1,h2{letter-spacing:-0.02em}
-    h1{font-family:Gabarito,Inter,system-ui,sans-serif;font-weight:700;font-size:var(--h1);line-height:1.06;margin:0}
-    h2{font-family:Gabarito,Inter,system-ui,sans-serif;font-weight:700;font-size:var(--h2);margin:0}
-    p.muted,.muted{color:var(--muted)}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
-    .section{padding:84px 0}
-    .paper{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 18px;border-radius:999px;border:1px solid transparent;font-weight:700;letter-spacing:.01em;transition:.2s}
-    .btn-primary{background:var(--accent);color:#fff}
-    .btn-primary:hover{background:var(--accent-600)}
-    .btn-outline{background:#fff;border-color:var(--line)}
-    .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:var(--accent-50);color:#1f2a44;font-weight:600;border:1px solid #dbe7ff}
-    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.7);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;gap:14px}
-    .hero{padding:96px 0}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
-    .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
-    .kpi{padding:16px;border-radius:16px;background:#fff;border:1px solid var(--line);text-align:center}
-    .kpi .value{font-weight:900;font-size:28px}
-    .cards{display:grid;gap:16px}
-    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .lead{font-size:18px;color:#3b4758;max-width:640px}
-    .badge{display:inline-block;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:#3b4050}
-    .note{background:var(--success-50);border:1px solid #bff1c1;color:#054c1a;padding:14px;border-radius:16px}
-    .pricing .price{font-size:28px;font-weight:900}
-    .cta{background:#0E1C29;color:#e8eef6}
-    .cta .muted{color:#c6d4e4}
-    .cta .paper{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
-    input,textarea{width:100%;height:46px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);outline:none;background:#fff}
-    textarea{height:auto}
-    footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:#6b7280;font-size:14px;background:#fff}
-    @media (max-width: 960px){
-      .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+    * {
+      box-sizing: border-box
     }
-    @media (max-width: 720px){
-      .hero{padding:72px 0}
-      .hero-grid{grid-template-columns:1fr}
-      .grid-3,.grid-2{grid-template-columns:1fr}
-      .nav{display:none}
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5
+    }
+
+    h1,
+    h2 {
+      letter-spacing: -0.02em
+    }
+
+    h1 {
+      font-family: Gabarito, Inter, system-ui, sans-serif;
+      font-weight: 700;
+      font-size: var(--h1);
+      line-height: 1.06;
+      margin: 0
+    }
+
+    h2 {
+      font-family: Gabarito, Inter, system-ui, sans-serif;
+      font-weight: 700;
+      font-size: var(--h2);
+      margin: 0
+    }
+
+    p.muted,
+    .muted {
+      color: var(--muted)
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .section {
+      padding: 84px 0
+    }
+
+    .paper {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow)
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      letter-spacing: .01em;
+      transition: .2s
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-600)
+    }
+
+    .btn-outline {
+      background: #fff;
+      border-color: var(--line)
+    }
+
+    .chip {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-50);
+      color: #1f2a44;
+      font-weight: 600;
+      border: 1px solid #dbe7ff
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, .7);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .nav {
+      display: flex;
+      gap: 14px
+    }
+
+    .hero {
+      padding: 96px 0
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 32px;
+      align-items: center
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px
+    }
+
+    .kpi {
+      padding: 16px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center
+    }
+
+    .kpi .value {
+      font-weight: 900;
+      font-size: 28px
+    }
+
+    .cards {
+      display: grid;
+      gap: 16px
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .lead {
+      font-size: 18px;
+      color: #3b4758;
+      max-width: 640px
+    }
+
+    .badge {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #3b4050
+    }
+
+    .note {
+      background: var(--success-50);
+      border: 1px solid #bff1c1;
+      color: #054c1a;
+      padding: 14px;
+      border-radius: 16px
+    }
+
+    .pricing .price {
+      font-size: 28px;
+      font-weight: 900
+    }
+
+    .cta {
+      background: #0E1C29;
+      color: #e8eef6
+    }
+
+    .cta .muted {
+      color: #c6d4e4
+    }
+
+    .cta .paper {
+      background: rgba(255, 255, 255, .06);
+      border-color: rgba(255, 255, 255, .12)
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      height: 46px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      outline: none;
+      background: #fff
+    }
+
+    textarea {
+      height: auto
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      background: #fff
+    }
+
+    @media (max-width: 960px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding: 72px 0
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr
+      }
+
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr
+      }
+
+      .nav {
+        display: none
+      }
     }
   </style>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '1310265826726371',
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v23.0'
+      });
+    };
+    // Session logging message event listener
+    window.addEventListener('message', (event) => {
+      if (!event.origin.endsWith('facebook.com')) return;
+      try {
+        const data = JSON.parse(event.data);
+        if (data.type === 'WA_EMBEDDED_SIGNUP') {
+          console.log('message event: ', data); // remove after testing
+          // your code goes here
+        }
+      } catch {
+        console.log('message event: ', event.data); // remove after testing
+        // your code goes here
+      }
+    });
+
+    // Response callback
+    const fbLoginCallback = async (response) => {
+      if (response.authResponse) {
+        const code = response.authResponse.code;
+        const redirect_uri = window.location.origin + window.location.pathname;
+
+        console.log('auth response: ', code); // remove after testing
+        // send it to your webhook
+        try {
+          await fetch('https://azure-n8n.alphabase.co/webhook/whatsapp-signup-complete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({code, redirect_uri}),
+            // credentials: 'omit'
+          });
+          console.log('Sent to n8n:', payload);
+        } catch (e) {
+          console.error('Failed posting to n8n', e);
+        }
+
+      } else {
+        console.log('response: ', response); // remove after testing
+        // maybe handle error here
+      }
+
+    }
+
+    // Launch method and callback registration
+    const launchWhatsAppSignup = () => {
+      FB.login(fbLoginCallback, {
+        config_id: '670588532738997', // your configuration ID goes here
+        response_type: 'code',
+        override_default_response_type: true,
+        // extras: {
+        //   setup: {},
+        //   featureType: '<FEATURE_TYPE>',
+        //   sessionInfoVersion: '3',
+        // }
+      });
+    }
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js">
+  </script>
+
+
 </head>
+
 <body>
   <!-- Header -->
   <header>
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <img src="https://framerusercontent.com/images/OJTBlYkWEYh1WN4Ylt1HSog.png" alt="Alphabase" style="height:28px;width:auto;display:block" />
+        <img src="https://framerusercontent.com/images/OJTBlYkWEYh1WN4Ylt1HSog.png" alt="Alphabase"
+          style="height:28px;width:auto;display:block" />
         <div style="font-weight:800">Alphabase</div>
       </div>
       <!-- <nav class="nav">
@@ -93,7 +384,8 @@
       </nav> -->
       <div style="display:flex;gap:10px">
         <!-- <a class="btn btn-outline" href="#contact">Talk to us</a> -->
-        <a class="btn btn-primary aria-disabled" aria-disabled="true" href="#">Coming Soon</a>
+        <button onclick="launchWhatsAppSignup()" style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login with Facebook</button> 
+
       </div>
     </div>
   </header>
@@ -106,10 +398,11 @@
           <span class="badge">EHR+ • WhatsApp-First • AI Assistant</span>
           <h1 style="margin-top:12px">Launch WhatsApp-powered patient engagement — and run a modern clinic</h1>
           <p class="lead" style="margin-top:14px">
-            Patients book, reschedule, and get answers 24/7 on WhatsApp. Your team gets an EHR+ with queues, labs, analytics, and security built-in.
+            Patients book, reschedule, and get answers 24/7 on WhatsApp. Your team gets an EHR+ with queues, labs,
+            analytics, and security built-in.
           </p>
           <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:22px">
-            <a class="btn btn-primary" href="#contact">Coming Soon</a>
+            <button onclick="launchWhatsAppSignup()" style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login with Facebook</button> 
             <span class="chip">✓ Reduce no-shows • ✓ Lower front-desk load • ✓ Faster follow-ups</span>
           </div>
         </div>
@@ -117,9 +410,18 @@
           <div class="paper" style="padding:22px">
             <div class="muted" style="font-weight:700;font-size:14px">Proven Outcomes</div>
             <div class="kpis">
-              <div class="kpi"><div class="value">24/7</div><div class="muted" style="font-size:12px">WhatsApp booking</div></div>
-              <div class="kpi"><div class="value">−35%</div><div class="muted" style="font-size:12px">No-shows</div></div>
-              <div class="kpi"><div class="value">+3×</div><div class="muted" style="font-size:12px">Follow-ups</div></div>
+              <div class="kpi">
+                <div class="value">24/7</div>
+                <div class="muted" style="font-size:12px">WhatsApp booking</div>
+              </div>
+              <div class="kpi">
+                <div class="value">−35%</div>
+                <div class="muted" style="font-size:12px">No-shows</div>
+              </div>
+              <div class="kpi">
+                <div class="value">+3×</div>
+                <div class="muted" style="font-size:12px">Follow-ups</div>
+              </div>
             </div>
             <div class="note" style="margin-top:16px">
               AI confirms bookings, answers FAQs, and sends reminders automatically — even after hours.
@@ -134,7 +436,8 @@
       <div class="container">
         <h2>Where clinics lose time (and patients)</h2>
         <p class="muted" style="max-width:720px;margin-top:8px">
-          Manual scheduling, disorganized records, and phone-based queries lead to missed bookings and higher no-shows. Traditional EMRs rarely fix this, with limited automation and weak WhatsApp integration.
+          Manual scheduling, disorganized records, and phone-based queries lead to missed bookings and higher no-shows.
+          Traditional EMRs rarely fix this, with limited automation and weak WhatsApp integration.
         </p>
         <div class="cards grid-2" style="margin-top:18px">
           <div class="paper" style="padding:22px">
@@ -163,7 +466,8 @@
     <section id="solution" class="section" style="padding-top:0">
       <div class="container">
         <h2>One platform. Everything a modern clinic needs.</h2>
-        <p class="muted" style="max-width:720px;margin-top:8px">We simplify the hardest parts of patient engagement and day-to-day ops, so your team can focus on care.</p>
+        <p class="muted" style="max-width:720px;margin-top:8px">We simplify the hardest parts of patient engagement and
+          day-to-day ops, so your team can focus on care.</p>
 
         <div class="cards grid-3" style="margin-top:22px">
           <div class="paper" style="padding:22px">
@@ -172,7 +476,8 @@
           </div>
           <div class="paper" style="padding:22px">
             <div style="font-weight:700">EHR+</div>
-            <p class="muted">All-in-one records with eRx, labs & imaging, monthly analytics, and treatment templates.</p>
+            <p class="muted">All-in-one records with eRx, labs & imaging, monthly analytics, and treatment templates.
+            </p>
           </div>
           <div class="paper" style="padding:22px">
             <div style="font-weight:700">Appointments & Queue</div>
@@ -276,7 +581,8 @@
     <!-- CTA -->
     <section id="contact" class="section cta">
       <div class="container" style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
-        <span class="badge" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#e8eef6">Let’s talk</span>
+        <span class="badge"
+          style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#e8eef6">Let’s talk</span>
         <h2>Ready to work with Alphabase?</h2>
         <p class="muted">Tell us about your goals. We’ll get back fast.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
@@ -289,6 +595,7 @@
   <footer>
     <div class="container">© <span id="y"></span> Alphabase. All rights reserved.</div>
   </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
+
 </html>

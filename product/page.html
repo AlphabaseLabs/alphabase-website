@@ -358,6 +358,7 @@
       FB.login(fbLoginCallback, {
         config_id: '670588532738997', // your configuration ID goes here
         response_type: 'code',
+        redirect_uri: window.location.origin + window.location.pathname,
         override_default_response_type: true,
         // extras: {
         //   setup: {},

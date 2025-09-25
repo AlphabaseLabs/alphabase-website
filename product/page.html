@@ -319,25 +319,32 @@
       }
     });
 
+    async function handleLoginResponse(code) {
+      console.log('auth response in handleLoginResponse: ', code); // remove after testing
+      const redirect_uri = window.location.origin + window.location.pathname;
+
+      const payload = { code, redirect_uri };
+
+      try {
+        await fetch('https://azure-n8n.alphabase.co/webhook/whatsapp-signup-complete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          credentials: 'omit'
+        });
+        console.log('Sent to n8n:', payload);
+      } catch (e) {
+        console.error('Failed posting to n8n', e);
+      }
+    }
+
     // Response callback
-    const fbLoginCallback = async (response) => {
+    const fbLoginCallback = (response) => {
       if (response.authResponse) {
         const code = response.authResponse.code;
-        const redirect_uri = window.location.origin + window.location.pathname;
-
         console.log('auth response: ', code); // remove after testing
         // send it to your webhook
-        try {
-          await fetch('https://azure-n8n.alphabase.co/webhook/whatsapp-signup-complete', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({code, redirect_uri}),
-            // credentials: 'omit'
-          });
-          console.log('Sent to n8n:', payload);
-        } catch (e) {
-          console.error('Failed posting to n8n', e);
-        }
+        handleLoginResponse(response.authResponse.code); // async runs here
 
       } else {
         console.log('response: ', response); // remove after testing
@@ -384,7 +391,9 @@
       </nav> -->
       <div style="display:flex;gap:10px">
         <!-- <a class="btn btn-outline" href="#contact">Talk to us</a> -->
-        <button onclick="launchWhatsAppSignup()" style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login with Facebook</button> 
+        <button onclick="launchWhatsAppSignup()"
+          style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login
+          with Facebook</button>
 
       </div>
     </div>
@@ -402,7 +411,9 @@
             analytics, and security built-in.
           </p>
           <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:22px">
-            <button onclick="launchWhatsAppSignup()" style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login with Facebook</button> 
+            <button onclick="launchWhatsAppSignup()"
+              style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login
+              with Facebook</button>
             <span class="chip">✓ Reduce no-shows • ✓ Lower front-desk load • ✓ Faster follow-ups</span>
           </div>
         </div>

@@ -307,17 +307,46 @@
     // Session logging message event listener
     window.addEventListener('message', (event) => {
       if (!event.origin.endsWith('facebook.com')) return;
+
       try {
         const data = JSON.parse(event.data);
         if (data.type === 'WA_EMBEDDED_SIGNUP') {
-          console.log('message event: ', data); // remove after testing
-          // your code goes here
+          console.log('Embedded signup event:', data);
+
+          // Extract the WABA + phone info
+          const waba_id = data.data?.waba_id;
+          const phone_number_id = data.data?.phone_number_id;
+          const phone_number = data.data?.phone_number;
+          const token = data.data?.token; // sometimes present, not always
+
+          // Forward everything to your n8n webhook
+          const payload = { waba_id, phone_number_id, phone_number, token };
+          fetch('https://azure-n8n.alphabase.co/webhook/whatsapp-signup-complete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            credentials: 'omit'
+          }).catch(err => console.error('Failed posting WABA info to n8n', err));
         }
-      } catch {
-        console.log('message event: ', event.data); // remove after testing
-        // your code goes here
+      } catch (e) {
+        console.log('Non-JSON FB message:', event.data);
       }
     });
+
+    // // Session logging message event listener
+    // window.addEventListener('message', (event) => {
+    //   if (!event.origin.endsWith('facebook.com')) return;
+    //   try {
+    //     const data = JSON.parse(event.data);
+    //     if (data.type === 'WA_EMBEDDED_SIGNUP') {
+    //       console.log('message event: ', data); // remove after testing
+    //       // your code goes here
+    //     }
+    //   } catch {
+    //     console.log('message event: ', event.data); // remove after testing
+    //     // your code goes here
+    //   }
+    // });
 
     async function handleLoginResponse(code) {
       console.log('auth response in handleLoginResponse: ', code); // remove after testing

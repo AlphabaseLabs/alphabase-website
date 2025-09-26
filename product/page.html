@@ -316,6 +316,7 @@
           if (data.event === 'FINISH') {
             const { phone_number_id, waba_id } = data.data;
             console.log("Phone number ID ", phone_number_id, " WhatsApp business account ID ", waba_id);
+            handleLoginResponse(data.data);
             // if user cancels the Embedded Signup flow
           } else if (data.event === 'CANCEL') {
             const { current_step } = data.data;
@@ -331,11 +332,8 @@
         console.log('Non JSON Responses', event.data);
       }
     });
-    async function handleLoginResponse(code) {
-      console.log('auth response in handleLoginResponse: ', code); // remove after testing
-      const redirect_uri = window.location.origin + window.location.pathname;
-
-      const payload = { code, redirect_uri };
+    async function handleLoginResponse(payload) {
+      console.log('auth response in handleLoginResponse: ', payload); // remove after testing
 
       try {
         await fetch('https://azure-n8n.alphabase.co/webhook/whatsapp-signup-complete', {
@@ -356,7 +354,7 @@
         const code = response.authResponse.code;
         console.log('auth response: ', code); // remove after testing
         // send it to your webhook
-        handleLoginResponse(response.authResponse.code); // async runs here
+        handleLoginResponse({ code: response.authResponse.code }); // async runs here
 
       } else {
         console.log('response: ', response); // remove after testing
@@ -375,7 +373,7 @@
           setup: {},
           "featureType": "whatsapp_business_app_onboarding", // set to 'whatsapp_business_app_onboarding'
           "sessionInfoVersion": "3",
-          "version": "v3" 
+          "version": "v3"
         }
       });
     }

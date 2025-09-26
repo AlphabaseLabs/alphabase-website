@@ -306,48 +306,31 @@
     };
     // Session logging message event listener
     window.addEventListener('message', (event) => {
-      if (!event.origin.endsWith('facebook.com')) return;
-
+      if (event.origin !== "https://www.facebook.com" && event.origin !== "https://web.facebook.com") {
+        return;
+      }
       try {
         const data = JSON.parse(event.data);
         if (data.type === 'WA_EMBEDDED_SIGNUP') {
-          console.log('Embedded signup event:', data);
-
-          // Extract the WABA + phone info
-          const waba_id = data.data?.waba_id;
-          const phone_number_id = data.data?.phone_number_id;
-          const phone_number = data.data?.phone_number;
-          const token = data.data?.token; // sometimes present, not always
-
-          // Forward everything to your n8n webhook
-          const payload = { waba_id, phone_number_id, phone_number, token };
-          fetch('https://azure-n8n.alphabase.co/webhook/whatsapp-signup-complete', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-            credentials: 'omit'
-          }).catch(err => console.error('Failed posting WABA info to n8n', err));
+          // if user finishes the Embedded Signup flow
+          if (data.event === 'FINISH') {
+            const {phone_number_id, waba_id} = data.data;
+            console.log("Phone number ID ", phone_number_id, " WhatsApp business account ID ", waba_id);
+            // if user cancels the Embedded Signup flow
+          } else if (data.event === 'CANCEL') {
+            const {current_step} = data.data;
+            console.warn("Cancel at ", current_step);
+            // if user reports an error during the Embedded Signup flow
+          } else if (data.event === 'ERROR') {
+            const {error_message} = data.data;
+            console.error("error ", error_message);
+          }
         }
-      } catch (e) {
-        console.log('Non-JSON FB message:', event.data);
+        document.getElementById("session-info-response").textContent = JSON.stringify(data, null, 2);
+      } catch {
+        console.log('Non JSON Responses', event.data);
       }
     });
-
-    // // Session logging message event listener
-    // window.addEventListener('message', (event) => {
-    //   if (!event.origin.endsWith('facebook.com')) return;
-    //   try {
-    //     const data = JSON.parse(event.data);
-    //     if (data.type === 'WA_EMBEDDED_SIGNUP') {
-    //       console.log('message event: ', data); // remove after testing
-    //       // your code goes here
-    //     }
-    //   } catch {
-    //     console.log('message event: ', event.data); // remove after testing
-    //     // your code goes here
-    //   }
-    // });
-
     async function handleLoginResponse(code) {
       console.log('auth response in handleLoginResponse: ', code); // remove after testing
       const redirect_uri = window.location.origin + window.location.pathname;

@@ -314,15 +314,15 @@
         if (data.type === 'WA_EMBEDDED_SIGNUP') {
           // if user finishes the Embedded Signup flow
           if (data.event === 'FINISH') {
-            const {phone_number_id, waba_id} = data.data;
+            const { phone_number_id, waba_id } = data.data;
             console.log("Phone number ID ", phone_number_id, " WhatsApp business account ID ", waba_id);
             // if user cancels the Embedded Signup flow
           } else if (data.event === 'CANCEL') {
-            const {current_step} = data.data;
+            const { current_step } = data.data;
             console.warn("Cancel at ", current_step);
             // if user reports an error during the Embedded Signup flow
           } else if (data.event === 'ERROR') {
-            const {error_message} = data.data;
+            const { error_message } = data.data;
             console.error("error ", error_message);
           }
         }
@@ -370,13 +370,13 @@
       FB.login(fbLoginCallback, {
         config_id: '670588532738997', // your configuration ID goes here
         response_type: 'code',
-        redirect_uri: window.location.origin + window.location.pathname,
         override_default_response_type: true,
-        // extras: {
-        //   setup: {},
-        //   featureType: '<FEATURE_TYPE>',
-        //   sessionInfoVersion: '3',
-        // }
+        "extras": {
+          setup: {},
+          "featureType": "whatsapp_business_app_onboarding", // set to 'whatsapp_business_app_onboarding'
+          "sessionInfoVersion": "3",
+          "version": "v3" 
+        }
       });
     }
   </script>

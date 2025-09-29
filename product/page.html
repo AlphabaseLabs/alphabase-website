@@ -344,6 +344,13 @@
           credentials: 'omit'
         });
         console.log('Sent to n8n:', payload);
+        
+        // if payload contains waba_id and phone_number_id, redirect to success page
+        const { waba_id, phone_number_id } = payload;
+        if (phone_number_id) {
+          alert('WhatsApp setup complete! Phone Number ID: ' + phone_number_id);
+          window.location.href = `/product/success.html?waba_id=${encodeURIComponent(waba_id)}&phone_number_id=${encodeURIComponent(phone_number_id)}`;
+        } 
       } catch (e) {
         console.error('Failed posting to n8n', e);
       }

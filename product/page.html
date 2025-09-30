@@ -314,7 +314,9 @@
         console.log("event data", data);
         if (data.type === 'WA_EMBEDDED_SIGNUP') {
           // if user finishes the Embedded Signup flow
+
           if (data.event === "FINISH_WHATSAPP_BUSINESS_APP_ONBOARDING") { //FINISH_WHATSAPP_BUSINESS_APP_ONBOARDING
+
             const { phone_number_id, waba_id } = data.data;
             console.log("Phone number ID ", phone_number_id, " WhatsApp business account ID ", waba_id);
             handleLoginResponse(data.data);

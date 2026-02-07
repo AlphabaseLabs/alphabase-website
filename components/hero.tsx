@@ -39,11 +39,8 @@ export function Hero() {
                   Watch a demo
                 </Button>
               </span>
-	            </div>
-	            <Button href="#product" variant="secondary" withArrow>
-	              See Sara in action
-	            </Button>
-	          </div>
+            </div>
+          </div>
 	        </motion.div>
 
         <motion.div

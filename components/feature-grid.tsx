@@ -5,33 +5,33 @@ import { H2 } from "./section";
 const features = [
   {
     icon: CalendarClock,
-    title: "24/7 booking that feels human",
-    desc: "Patients schedule, reschedule, and ask questions anytime—without hold music.",
-  },
-  {
-    icon: FileText,
-    title: "EMR tasks, handled",
-    desc: "Pre‑visit notes, intake routing, and chart updates—organized and ready for review.",
+    title: "Scheduling that just works",
+    desc: "Offer the right visit types, handle reschedules, and confirm instantly—day or night.",
   },
   {
     icon: MessageSquareText,
-    title: "Reminders and follow‑ups that stick",
-    desc: "Automated texts and emails that reduce no‑shows and keep care on track.",
+    title: "Fast, consistent answers",
+    desc: "Pricing ranges, prep instructions, and policies—kept aligned with your playbook.",
   },
   {
     icon: PhoneCall,
-    title: "Calls, texts, web chat—one inbox",
-    desc: "Every conversation in one place, with consistent answers and clean handoffs.",
+    title: "Phone + text, covered",
+    desc: "One place for calls and messages, with smooth handoffs when a human should step in.",
+  },
+  {
+    icon: FileText,
+    title: "Intake + follow‑ups",
+    desc: "Collect key details before the visit and send the right after‑care or plan reminders.",
   },
   {
     icon: Sparkles,
-    title: "Protocols, not guesswork",
-    desc: "Set rules once. Alphabase executes the right next step every time.",
+    title: "Coachable by your team",
+    desc: "Refine responses in minutes. Avery adapts without losing consistency.",
   },
   {
     icon: Shield,
-    title: "Designed for patient privacy",
-    desc: "Clear permissions, audit trails, and controls your team can trust.",
+    title: "Visibility and guardrails",
+    desc: "Permissions, audit trails, and escalation rules so you stay in control.",
   },
 ];
 
@@ -41,8 +41,11 @@ export function FeatureGrid() {
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <H2 className="text-3xl md:text-5xl leading-tight text-ink-900 dark:text-white">
-            Everything your front desk does. All in one platform.
+            Everything around the appointment, handled.
           </H2>
+          <p className="mt-4 text-base md:text-lg leading-relaxed text-ink-700 dark:text-white/70">
+            From first inquiry to post‑visit check‑in, Avery keeps your team responsive and your day calmer.
+          </p>
         </div>
 
         <div className="mt-12 grid gap-y-10 gap-x-12 text-center md:grid-cols-3">

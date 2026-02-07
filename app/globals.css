@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  /* Mercury-inspired light palette */
+  --paper: 245 244 241;         /* #f5f4f1 */
+  --ink-950: 24 24 24;          /* near-black */
+  --ink-900: 43 42 38;          /* #2b2a26 */
+  --ink-800: 74 73 68;
+  --ink-700: 104 102 95;
+  --ink-600: 132 130 122;
+  --ink-500: 164 162 154;
+
+  --brand-600: 81 101 235;      /* ~#5165eb */
+  --brand-500: 77 97 235;
+  --brand-200: 210 216 255;
+  --brand-100: 236 239 255;
+
+  --mist: 235 236 240;
+
+  /* Mercury-inspired dark palette */
+  --night-950: 16 16 33;        /* #101021 */
+  --night-900: 25 25 41;        /* #191929 */
+  --night-800: 37 37 57;
+  --night-700: 52 52 72;
+}
+
+html, body{
+  height: 100%;
+}
+
+body{
+  background: rgb(var(--paper));
+  color: rgb(var(--ink-900));
+}
+
+::selection{
+  background: rgb(var(--brand-200));
+}
+
+.noise{
+  position: relative;
+}
+
+.noise:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.08;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(0,0,0,.10), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(0,0,0,.08), transparent 40%),
+    radial-gradient(circle at 60% 20%, rgba(0,0,0,.06), transparent 45%);
+  mix-blend-mode: multiply;
+}
+
+@media (prefers-color-scheme: dark){
+  body{
+    background: rgb(var(--night-950));
+    color: rgba(255,255,255,.92);
+  }
+  .noise:before{
+    opacity:.12;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,.10), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(255,255,255,.08), transparent 40%),
+      radial-gradient(circle at 60% 20%, rgba(255,255,255,.06), transparent 45%);
+    mix-blend-mode: screen;
+  }
+}
+
+/* Smooth fonts */
+*{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes marquee{
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(-50%);
+  }
+}
+
+.marquee{
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.marquee-track{
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}

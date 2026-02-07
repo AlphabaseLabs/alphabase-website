@@ -34,7 +34,7 @@ export function Hero() {
                 placeholder="Enter your work email"
                 className="h-9 w-full bg-transparent px-4 text-sm outline-none placeholder:text-ink-600/70 dark:placeholder:text-white/50"
               />
-              <span className="pl-2">
+              <span className="shrink-0 pl-2">
                 <Button href="#demo" size="sm">
                   Watch a demo
                 </Button>

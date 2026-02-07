@@ -28,13 +28,13 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <div className="flex w-full max-w-md items-center rounded-full bg-white/70 ring-1 ring-black/10 shadow-soft dark:bg-night-900/70 dark:ring-white/10">
+            <div className="flex w-full max-w-md items-center rounded-full bg-white/70 ring-1 ring-black/10 p-1 shadow-soft dark:bg-night-900/70 dark:ring-white/10">
               <input
                 aria-label="Email"
                 placeholder="Enter your work email"
-                className="h-11 w-full bg-transparent px-5 text-sm outline-none placeholder:text-ink-600/70 dark:placeholder:text-white/50"
+                className="h-9 w-full bg-transparent px-4 text-sm outline-none placeholder:text-ink-600/70 dark:placeholder:text-white/50"
               />
-              <span className="pr-2">
+              <span className="pl-2">
                 <Button href="#demo" size="sm">
                   Watch a demo
                 </Button>

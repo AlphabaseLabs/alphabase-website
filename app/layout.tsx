@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Alphabase — Avery, the AI teammate for modern clinics",
+  title: "Alphabase — Sara, the AI teammate for modern clinics",
   description:
-    "Avery handles inquiries, scheduling, reminders, and follow‑ups for dental, aesthetics, hair transplant, physiotherapy, and nutrition teams.",
+    "Sara handles inquiries, scheduling, reminders, and follow‑ups for dental, aesthetics, hair transplant, physiotherapy, and nutrition teams.",
   metadataBase: new URL("https://example.com"),
   openGraph: {
     title: "Alphabase",

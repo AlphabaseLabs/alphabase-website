@@ -13,15 +13,15 @@ const bullets = [
 
 export function SplitSection() {
   return (
-    <section id="solutions" className="py-16 md:py-24">
-      <Container>
-        <div className="grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <Eyebrow>Coachable by your team</Eyebrow>
-            <H2 className="mt-3">Update once. Stay consistent everywhere.</H2>
-            <Lead>
-              Make a change in plain language, and Avery carries it across calls, texts, and chat—without the drift that happens with scripts.
-            </Lead>
+	    <section id="solutions" className="py-16 md:py-24">
+	      <Container>
+	        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+	          <div>
+	            <Eyebrow>Coachable by your team</Eyebrow>
+	            <H2 className="mt-3">Update once. Stay consistent everywhere.</H2>
+	            <Lead>
+	              Make a change in plain language, and Sara carries it across calls, texts, and chat—without the drift that happens with scripts.
+	            </Lead>
 
             <ul className="mt-8 space-y-4">
               {bullets.map((b) => (

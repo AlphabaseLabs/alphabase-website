@@ -26,7 +26,7 @@ const features = [
   {
     icon: Sparkles,
     title: "Coachable by your team",
-    desc: "Refine responses in minutes. Avery adapts without losing consistency.",
+    desc: "Refine responses in minutes. Sara adapts without losing consistency.",
   },
   {
     icon: Shield,
@@ -44,7 +44,7 @@ export function FeatureGrid() {
             Everything around the appointment, handled.
           </H2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-ink-700 dark:text-white/70">
-            From first inquiry to post‑visit check‑in, Avery keeps your team responsive and your day calmer.
+            From first inquiry to post‑visit check‑in, Sara keeps your team responsive and your day calmer.
           </p>
         </div>
 

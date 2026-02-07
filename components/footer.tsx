@@ -14,7 +14,7 @@ export function Footer() {
               <span className="text-sm font-semibold tracking-tightish">Alphabase</span>
             </div>
             <p className="mt-4 max-w-sm text-sm text-ink-600 dark:text-white/60 leading-relaxed">
-              Avery is the AI teammate built for clinic and wellness workflows—responses, scheduling, reminders, and follow‑ups in one place.
+              Sara is the AI teammate built for clinic and wellness workflows—responses, scheduling, reminders, and follow‑ups in one place.
             </p>
           </div>
 

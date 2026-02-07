@@ -12,17 +12,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-3xl text-center"
-        >
-          <p className="text-sm text-ink-700 dark:text-white/70">
-            Introducing Avery by Alphabase.
-          </p>
+	          className="mx-auto max-w-3xl text-center"
+	        >
+	          <p className="text-sm text-ink-700 dark:text-white/70">
+	            Introducing Sara by Alphabase.
+	          </p>
           <h1 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tightish text-ink-900 dark:text-white">
             More booked appointments. Less admin. Better experiences.
           </h1>
-          <p className="mt-5 text-base md:text-lg leading-relaxed text-ink-700 dark:text-white/70">
-            Avery handles inquiries, scheduling, reminders, and follow‑ups across phone, text, and chat—trained on your services, policies, and tone.
-          </p>
+	          <p className="mt-5 text-base md:text-lg leading-relaxed text-ink-700 dark:text-white/70">
+	            Sara handles inquiries, scheduling, reminders, and follow‑ups across phone, text, and chat—trained on your services, policies, and tone.
+	          </p>
           <p className="mt-4 text-xs text-ink-600 dark:text-white/60">
             Built for Dental • Aesthetics • Hair transplant • Physiotherapy • Nutrition
           </p>
@@ -39,12 +39,12 @@ export function Hero() {
                   Watch a demo
                 </Button>
               </span>
-            </div>
-            <Button href="#product" variant="secondary" withArrow>
-              See Avery in action
-            </Button>
-          </div>
-        </motion.div>
+	            </div>
+	            <Button href="#product" variant="secondary" withArrow>
+	              See Sara in action
+	            </Button>
+	          </div>
+	        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -71,13 +71,13 @@ export function Hero() {
               </div>
               <div className="p-6 md:p-8">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-ink-900 dark:text-white">
-                    Live Coordinator
-                  </p>
-                  <span className="inline-flex items-center rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-ink-900 ring-1 ring-brand-200 dark:bg-white/10 dark:text-white dark:ring-white/15">
-                    Avery Online
-                  </span>
-                </div>
+	                  <p className="text-sm font-medium text-ink-900 dark:text-white">
+	                    Live Coordinator
+	                  </p>
+	                  <span className="inline-flex items-center rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-ink-900 ring-1 ring-brand-200 dark:bg-white/10 dark:text-white dark:ring-white/15">
+	                    Sara Online
+	                  </span>
+	                </div>
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
                   <div className="rounded-3xl bg-white/80 ring-1 ring-black/5 p-5 shadow-soft dark:bg-night-950/40 dark:ring-white/10">
                     <p className="text-xs text-ink-600 dark:text-white/60">
@@ -110,13 +110,13 @@ export function Hero() {
                   <p className="mt-2 text-sm text-ink-900 dark:text-white">
                     “Can I book a first visit for next week?”
                   </p>
-                  <div className="mt-3 flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-brand-600" />
-                    <p className="text-sm text-ink-700 dark:text-white/70">
-                      Avery suggests options, answers questions, and confirms the best fit.
-                    </p>
-                  </div>
-                </div>
+	                  <div className="mt-3 flex items-center gap-2">
+	                    <span className="h-2 w-2 rounded-full bg-brand-600" />
+	                    <p className="text-sm text-ink-700 dark:text-white/70">
+	                      Sara suggests options, answers questions, and confirms the best fit.
+	                    </p>
+	                  </div>
+	                </div>
 
                 <p className="mt-6 text-xs text-ink-600 dark:text-white/55">
                   Demo UI — connect your tools to go live.

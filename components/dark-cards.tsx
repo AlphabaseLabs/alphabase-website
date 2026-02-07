@@ -49,12 +49,12 @@ export function DarkCards() {
                   <p className="mt-2 text-sm leading-relaxed text-white/70">
                     {c.desc}
                   </p>
-                  <div className="mt-6 h-28 rounded-3xl bg-[radial-gradient(circle_at_30%_30%,rgba(81,101,235,0.28),transparent_55%),radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.10),transparent_55%)]" />
-                </div>
-              );
-            })}
-          </div>
-        </Container>
+	                  <div className="mt-6 h-28 rounded-3xl bg-[radial-gradient(circle_at_30%_30%,rgb(var(--brand-600)_/_0.28),transparent_55%),radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.10),transparent_55%)]" />
+	                </div>
+	              );
+	            })}
+	          </div>
+	        </Container>
       </div>
     </section>
   );

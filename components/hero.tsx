@@ -52,10 +52,10 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="mt-12 md:mt-16"
         >
-          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-4xl bg-white/80 ring-1 ring-black/10 shadow-lift dark:bg-night-900/60 dark:ring-white/10">
-            <div className="absolute inset-0">
-              <div className="h-full w-full bg-[radial-gradient(circle_at_30%_20%,rgba(81,101,235,0.18),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.55),transparent_52%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(81,101,235,0.24),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.08),transparent_52%)]" />
-            </div>
+	          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-4xl bg-white/80 ring-1 ring-black/10 shadow-lift dark:bg-night-900/60 dark:ring-white/10">
+	            <div className="absolute inset-0">
+	              <div className="h-full w-full bg-[radial-gradient(circle_at_30%_20%,rgb(var(--brand-600)_/_0.18),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.55),transparent_52%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgb(var(--brand-600)_/_0.24),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.08),transparent_52%)]" />
+	            </div>
 
             <div className="relative grid gap-0 md:grid-cols-[280px_1fr]">
               <div className="hidden md:block border-r border-black/5 dark:border-white/10 p-6">

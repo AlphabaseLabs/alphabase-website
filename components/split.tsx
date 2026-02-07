@@ -43,7 +43,7 @@ export function SplitSection() {
             className="rounded-4xl overflow-hidden ring-1 ring-black/10 shadow-lift bg-white/70 dark:bg-night-900/60 dark:ring-white/10"
           >
 	            <div className="p-6 md:p-8">
-	              <div className="rounded-4xl bg-[radial-gradient(circle_at_25%_20%,rgba(81,101,235,0.18),transparent_45%),radial-gradient(circle_at_70%_65%,rgba(0,0,0,0.06),transparent_55%)] dark:bg-[radial-gradient(circle_at_25%_20%,rgba(81,101,235,0.28),transparent_45%),radial-gradient(circle_at_70%_65%,rgba(255,255,255,0.06),transparent_55%)] p-6 md:p-8">
+		              <div className="rounded-4xl bg-[radial-gradient(circle_at_25%_20%,rgb(var(--brand-600)_/_0.18),transparent_45%),radial-gradient(circle_at_70%_65%,rgba(0,0,0,0.06),transparent_55%)] dark:bg-[radial-gradient(circle_at_25%_20%,rgb(var(--brand-600)_/_0.28),transparent_45%),radial-gradient(circle_at_70%_65%,rgba(255,255,255,0.06),transparent_55%)] p-6 md:p-8">
 	                <p className="text-xs text-ink-600 dark:text-white/60">Example flow</p>
 	                <p className="mt-2 text-sm font-semibold text-ink-900 dark:text-white">
 	                  New inquiry — initial consult

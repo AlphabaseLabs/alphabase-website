@@ -7,17 +7,33 @@ export default {
     extend: {
       fontFamily: {
         sans: [
+          "var(--font-inter)",
+          "Inter",
           "SF Pro Display",
           "SF Pro Text",
           "system-ui",
           "-apple-system",
           "Segoe UI",
-          "Inter",
           "Roboto",
           "Helvetica Neue",
           "Arial",
           "sans-serif",
         ],
+      },
+      fontSize: {
+        micro: ["0.6875rem", { lineHeight: "1rem" }],
+        caption: ["0.75rem", { lineHeight: "1.125rem" }],
+        "body-sm": ["0.8125rem", { lineHeight: "1.375rem" }],
+        body: ["0.9375rem", { lineHeight: "1.5rem" }],
+        "body-lg": ["1.0625rem", { lineHeight: "1.625rem" }],
+        h4: ["1.25rem", { lineHeight: "1.75rem" }],
+        h3: ["1.5rem", { lineHeight: "2rem" }],
+        "h3-lg": ["1.75rem", { lineHeight: "2.25rem" }],
+        h2: ["2rem", { lineHeight: "2.5rem" }],
+        "h2-lg": ["2.5rem", { lineHeight: "3rem" }],
+        h1: ["2.75rem", { lineHeight: "1.1" }],
+        "h1-md": ["3.5rem", { lineHeight: "1.1" }],
+        "h1-lg": ["4.25rem", { lineHeight: "1.08" }],
       },
       colors: {
         ink: {
@@ -59,6 +75,7 @@ export default {
       },
       letterSpacing: {
         tightish: "-0.02em",
+        mercury: "-0.025em",
       },
       keyframes: {
         floaty: {

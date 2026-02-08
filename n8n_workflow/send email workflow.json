@@ -1,0 +1,72 @@
+{
+  "name": "Demo Form Email Notification",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "demo-lead",
+        "options": {}
+      },
+      "id": "8d3cf0f2-ec5a-4fd4-b551-133f0821bb9b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -96,
+        -208
+      ],
+      "webhookId": "72b77973-5293-47be-a567-b1156e02a1cd"
+    },
+    {
+      "parameters": {
+        "sendTo": "zaryab@alphabase.co,bilal@alphabase.co",
+        "subject": "=New Demo Request from  {{ $json.body.name }}",
+        "emailType": "text",
+        "message": "=Name: {{ $json.body.name }} Email:{{ $json.body.email }}  Practice: {{ $json.body.practice }} Type: {{ $json.body.practiceType }} Size: {{ $json.body.practiceSize }} Notes: {{ $json.body.notes }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        160,
+        -208
+      ],
+      "id": "4beb6337-17f2-4147-b636-74b6facc8546",
+      "name": "Send a message",
+      "webhookId": "759b5505-4681-48f1-b3af-b4ccc5b8608a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DXSQ2PdfMwm54FXq",
+          "name": "Gmail account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "f0b1d7c7-655b-4d7f-90f2-b51292738fee",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0f2705d550657446dc610dd3314e9a6a1d2a9baa468cddb416ab0bcd18948216"
+  },
+  "id": "2zvCMDmdkF9L3pjQRD068",
+  "tags": []
+}

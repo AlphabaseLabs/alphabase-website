@@ -54,9 +54,9 @@ export function LogoCloud() {
     },
   ];
   return (
-    <section className="py-10 md:py-16">
+    <section className="pt-16 pb-10 md:pt-28 md:pb-16">
       <Container>
-        <H2 className="mx-auto max-w-2xl text-center text-2xl md:text-3xl leading-tight text-ink-900 dark:text-white">
+        <H2 className="mx-auto max-w-2xl text-center text-h3-lg md:text-h2 leading-tight text-ink-900 dark:text-white">
           Designed for teams across dental, aesthetics, hair transplant, physiotherapy, and nutrition.
         </H2>
         <div className="mt-10 marquee text-ink-700 dark:text-white/70 opacity-70">
@@ -65,7 +65,7 @@ export function LogoCloud() {
               <div
                 key={`${logo.name}-${index}`}
                 aria-hidden={index >= logos.length}
-                className="flex items-center gap-3 text-lg md:text-xl font-semibold tracking-tightish whitespace-nowrap"
+                className="flex items-center gap-3 text-body-lg md:text-h4 font-semibold tracking-mercury whitespace-nowrap"
               >
                 {logo.mark}
                 <span>{logo.name}</span>

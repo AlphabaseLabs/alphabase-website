@@ -10,7 +10,7 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-brand-600 text-white shadow-soft hover:shadow-lift hover:bg-brand-500",
+    "bg-[#DD875C] text-white shadow-soft hover:shadow-lift hover:bg-[#CF7B52]",
   secondary:
     "bg-white/70 text-ink-900 ring-1 ring-black/10 hover:bg-white shadow-soft dark:bg-night-900/70 dark:text-white dark:ring-white/10",
   ghost:
@@ -18,9 +18,9 @@ const variants: Record<Variant, string> = {
 };
 
 const sizes: Record<Size, string> = {
-  sm: "h-9 px-4 text-sm",
-  md: "h-11 px-5 text-sm",
-  lg: "h-12 px-6 text-base",
+  sm: "h-9 px-4 text-body-sm",
+  md: "h-11 px-5 text-body-sm",
+  lg: "h-12 px-6 text-body",
 };
 
 export function Button({
@@ -29,6 +29,7 @@ export function Button({
   variant = "primary",
   size = "md",
   withArrow = false,
+  type = "button",
   className,
 }: {
   href?: string;
@@ -36,6 +37,7 @@ export function Button({
   variant?: Variant;
   size?: Size;
   withArrow?: boolean;
+  type?: "button" | "submit" | "reset";
   className?: string;
 }) {
   const cls = cn(base, variants[variant], sizes[size], className);
@@ -47,5 +49,5 @@ export function Button({
   );
 
   if (href) return <Link href={href} className={cls}>{content}</Link>;
-  return <button className={cls} type="button">{content}</button>;
+  return <button className={cls} type={type}>{content}</button>;
 }

@@ -14,10 +14,10 @@ export function Stats() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {stats.map((s, i) => (
             <div key={s.label} className="relative">
-              <p className="text-4xl md:text-5xl font-semibold tracking-tightish text-ink-900 dark:text-white">
+              <p className="text-h2 md:text-h2-lg font-semibold tracking-mercury text-ink-900 dark:text-white">
                 {s.value}
               </p>
-              <p className="mt-2 text-sm text-ink-600 dark:text-white/60">
+              <p className="mt-2 text-body-sm text-ink-600 dark:text-white/60">
                 {s.label}
               </p>
               {i < stats.length - 1 ? (

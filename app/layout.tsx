@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Alphabase — Sara, the AI teammate for modern clinics",
+  title: "Alphabase® | Sara, the AI teammate for modern clinics",
   description:
     "Sara handles inquiries, scheduling, reminders, and follow‑ups for dental, aesthetics, hair transplant, physiotherapy, and nutrition teams.",
   metadataBase: new URL("https://example.com"),
   openGraph: {
-    title: "Alphabase",
+    title: "Alphabase®",
     description:
-      "A coachable AI teammate for clinics and wellness practices—built to keep your calendar moving and your inbox calm.",
+      "A coachable AI teammate for clinics and wellness practices built to keep your calendar moving and your inbox calm.",
     type: "website",
   },
   icons: [{ rel: "icon", url: "/favicon.svg" }],

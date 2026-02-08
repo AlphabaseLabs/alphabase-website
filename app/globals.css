@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root{
+  --font-inter: Inter;
+
   /* Mercury-inspired light palette */
   --paper: 245 244 241;         /* #f5f4f1 */
   --ink-950: 24 24 24;          /* near-black */
@@ -12,11 +14,11 @@
   --ink-600: 132 130 122;
   --ink-500: 164 162 154;
 
-  /* Product teal accent (used for primary actions, focus, and subtle glows) */
-  --brand-600: 13 148 136;      /* #0d9488 */
-  --brand-500: 20 184 166;      /* #14b8a6 */
-  --brand-200: 153 246 228;     /* #99f6e4 */
-  --brand-100: 204 251 241;     /* #ccfbf1 */
+  /* OpenMRS teal accent (used for primary actions, focus, and subtle glows) */
+  --brand-600: 0 147 132;       /* #009384 */
+  --brand-500: 0 185 165;       /* #00B9A5 */
+  --brand-200: 125 232 217;     /* #7DE8D9 */
+  --brand-100: 191 242 234;     /* #BFF2EA */
 
   --mist: 235 236 240;
 
@@ -59,10 +61,11 @@ body{
 
 /* Keep a consistent light theme regardless of system settings. */
 
-/* Smooth fonts */
+/* Smooth fonts + Mercury character variants */
 *{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 @keyframes marquee{
@@ -84,4 +87,15 @@ body{
   align-items: center;
   width: max-content;
   animation: marquee 32s linear infinite;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
